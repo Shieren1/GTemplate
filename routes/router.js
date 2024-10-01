@@ -4,6 +4,7 @@ const sma = require('../controller/sma_controller');
 
 
 router.get('/', sma.index);
+router.get('/products', sma.products);
 //router.post('/save', sma.save);
 
 
