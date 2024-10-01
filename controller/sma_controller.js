@@ -6,10 +6,7 @@ const ams = {
         res.render('index');
 
     },
-    products:(req, res)=>{
-        res.render('products');
 
-    }
 
 
     // save:(req, res)=>{
@@ -20,8 +17,7 @@ const ams = {
     //     })
        
     // }
-<<<<<<< Updated upstream
-=======
+
     products:(req, res)=>{
         res.render('products');
 
@@ -30,7 +26,7 @@ const ams = {
         res.render('prodDetail');
 
     }
->>>>>>> Stashed changes
+
 
 };
 
