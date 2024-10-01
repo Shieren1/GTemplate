@@ -20,6 +20,17 @@ const ams = {
     //     })
        
     // }
+<<<<<<< Updated upstream
+=======
+    products:(req, res)=>{
+        res.render('products');
+
+    },
+    prodDetail:(req, res)=>{
+        res.render('prodDetail');
+
+    }
+>>>>>>> Stashed changes
 
 };
 
