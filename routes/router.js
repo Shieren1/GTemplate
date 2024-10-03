@@ -8,6 +8,9 @@ router.get('/products', sma.products);
 
 //router.post('/save', sma.save);
 router.get('/prodDetail', sma.prodDetail);
+router.get('/myacc', sma.myacc);
+router.get('/login', sma.login);
+router.get('/register', sma.register);
 
 
 module.exports = router;
