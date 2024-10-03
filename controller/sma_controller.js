@@ -25,7 +25,20 @@ const ams = {
     register:(req, res)=>{
         res.render('register');
 
+    },
+    checkout:(req, res)=>{
+        res.render('checkout');
+
+    },
+    contact:(req, res)=>{
+        res.render('contact');
+
+    },
+    wishlist:(req, res)=>{
+        res.render('wishlist');
+
     }
+
 
 
     // save:(req, res)=>{
