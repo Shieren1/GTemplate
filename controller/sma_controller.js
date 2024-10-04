@@ -37,7 +37,12 @@ const ams = {
     wishlist:(req, res)=>{
         res.render('wishlist');
 
+    },
+    cart:(req, res)=>{
+        res.render('cart');
+
     }
+
 
 
 

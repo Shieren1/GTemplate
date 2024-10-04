@@ -14,5 +14,6 @@ router.get('/register', sma.register);
 router.get('/checkout', sma.checkout);
 router.get('/contact', sma.contact);
 router.get('/wishlist', sma.wishlist);
+router.get('/cart', sma.cart);
 
 module.exports = router;
