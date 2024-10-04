@@ -3,20 +3,20 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Login Form | Dan Aleko</title>
+  <title>Login Form</title>
   <link rel="stylesheet" href="/css/login.css">
   <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
 </head>
 <body>
   <div class="wrapper">
-    <form action="">
+    <form action="/login" method="POST"> <!-- Update the form to use POST -->
       <h1>Login</h1>
       <div class="input-box">
-        <input type="text" placeholder="Username" required>
+        <input type="text" name="email" placeholder="Email" required>
         <i class='bx bxs-user'></i>
       </div>
       <div class="input-box">
-        <input type="password" placeholder="Password" required>
+        <input type="password" name="password" placeholder="Password" required>
         <i class='bx bxs-lock-alt'></i>
       </div>
       <div class="remember-forgot">
@@ -27,7 +27,7 @@
       <div class="register-link">
         <p>Don't have an account? <a href="register">Register</a></p>
       </div>
-    </form>
+    </form>    
   </div>
 </body>
 </html>

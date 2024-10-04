@@ -16,11 +16,11 @@ body {
 }
 
 .wrapper {
-    width: 420px;
+    width: 600px;
     background: transparent;
-    border: 2px solid rgba(255, 255, 255, .2);
+    border: 2px solid rgba(22, 11, 11, 0.2);
     backdrop-filter: blur(9px);
-    color: #fff;
+    color: #130c0c;
     border-radius: 12px;
     padding: 30px 40px;
 }
@@ -31,28 +31,36 @@ body {
     margin-bottom: 20px;
 }
 
+.input-group {
+    display: flex;
+    justify-content: space-between;
+    gap: 20px;
+    width: 100%;
+}
+
 .input-box {
     position: relative;
-    width: 100%;
-    height: 50px;
+    flex-grow: 1;
+    height: 60px;
     margin: 15px 0;
 }
 
-.input-box input {
+.input-box input, 
+.input-box select {
     width: 100%;
     height: 100%;
     background: transparent;
     border: none;
     outline: none;
-    border: 2px solid rgba(255, 255, 255, .2);
+    border: 2px solid rgb(0, 0, 0);
     border-radius: 40px;
     font-size: 16px;
-    color: #fff;
+    color: #000000;
     padding: 20px 45px 20px 20px;
 }
 
 .input-box input::placeholder {
-    color: #fff;
+    color: #000000;
 }
 
 .input-box i {
@@ -61,6 +69,15 @@ body {
     top: 30%;
     transform: translate(-50%);
     font-size: 20px;
+}
+
+.input-box select:focus {
+    border-color: #000000;
+}
+
+.input-box select option {
+    background-color: #000000;
+    color: #ffffff;
 }
 
 .remember-forgot {
@@ -91,11 +108,16 @@ body {
     border: none;
     outline: none;
     border-radius: 40px;
-    box-shadow: 0 0 10px rgba(0, 0, 0, .1);
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.39);
     cursor: pointer;
     font-size: 16px;
-    color: #333;
+    color: #000000;
     font-weight: 600;
+    transition: background 0.3s ease;
+}
+
+.btn:hover {
+    background: #f0f0f0;
 }
 
 .register-link {

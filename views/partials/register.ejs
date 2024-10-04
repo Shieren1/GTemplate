@@ -3,71 +3,98 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Register | Dan Aleko</title>
+  <title>Register</title>
   <link rel="stylesheet" href="/css/register.css">
   <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
 </head>
 <body>
   <div class="wrapper">
-    <form action="">
+    <form action="/register" method="POST">
       <h1>Register</h1>
-      
-      <div class="input-box">
-        <input type="text" placeholder="First Name" required>
-        <i class='bx bxs-user'></i>
+    
+      <div class="input-group">
+        <div class="input-box">
+          <input type="text" name="firstname" placeholder="First Name" required>
+          <i class='bx bxs-user'></i>
+        </div>
+    
+        <div class="input-box">
+          <input type="text" name="lastname" placeholder="Last Name" required>
+          <i class='bx bxs-user'></i>
+        </div>
       </div>
-
-      <div class="input-box">
-        <input type="text" placeholder="Last Name" required>
-        <i class='bx bxs-user'></i>
+    
+      <div class="input-group">
+        <div class="input-box">
+          <input type="email" name="email" placeholder="Email" required>
+          <i class='bx bxs-envelope'></i>
+        </div>
+    
+        <div class="input-box">
+          <input type="tel" name="contact" placeholder="Contact No." required>
+          <i class='bx bxs-phone'></i>
+        </div>
       </div>
-
-      <div class="input-box">
-        <input type="email" placeholder="Email" required>
-        <i class='bx bxs-envelope'></i>
+    
+      <div class="input-group">
+        <div class="input-box">
+          <select name="gender" required>
+            <option value="" disabled selected>Gender</option>
+            <option value="male">Male</option>
+            <option value="female">Female</option>
+            <option value="other">Other</option>
+          </select>
+          <i class='bx bxs-user'></i>
+        </div>
+    
+        <div class="input-box">
+          <input type="text" name="country" placeholder="Country" required>
+          <i class='bx bxs-globe'></i>
+        </div>
       </div>
-
-      <div class="input-box">
-        <input type="tel" placeholder="Contact No." required>
-        <i class='bx bxs-phone'></i>
+    
+      <div class="input-group">
+        <div class="input-box">
+          <input type="text" name="province" placeholder="Province" required>
+          <i class='bx bxs-location-plus'></i>
+        </div>
+    
+        <div class="input-box">
+          <input type="text" name="city" placeholder="City" required>
+          <i class='bx bxs-city'></i>
+        </div>
       </div>
-
-      <div class="input-box">
-        <input type="text" placeholder="Address" required>
-        <i class='bx bxs-home'></i>
+    
+      <div class="input-group">
+        <div class="input-box">
+          <input type="text" name="barangay" placeholder="Barangay" required>
+          <i class='bx bxs-map'></i>
+        </div>
+    
+        <div class="input-box">
+          <input type="text" name="sitio" placeholder="Sitio" required>
+          <i class='bx bxs-map-pin'></i>
+        </div>
       </div>
-
-      <div class="input-box">
-        <input type="text" placeholder="Country" required>
-        <i class='bx bxs-globe'></i>
+    
+      <div class="input-group">
+        <div class="input-box">
+          <input type="text" name="zip_code" placeholder="ZIP Code" required>
+          <i class='bx bxs-code'></i>
+        </div>
+    
+        <div class="input-box">
+          <input type="password" name="passwords" placeholder="Password" required>
+          <i class='bx bxs-lock-alt'></i>
+        </div>
       </div>
-
-      <div class="input-box">
-        <input type="text" placeholder="State" required>
-        <i class='bx bxs-location-plus'></i>
-      </div>
-
-      <div class="input-box">
-        <input type="text" placeholder="City" required>
-        <i class='bx bxs-city'></i>
-      </div>
-
-      <div class="input-box">
-        <input type="text" placeholder="ZIP Code" required>
-        <i class='bx bxs-code'></i>
-      </div>
-
-      <div class="input-box">
-        <input type="password" placeholder="Password" required>
-        <i class='bx bxs-lock-alt'></i>
-      </div>
-      
+    
       <button type="submit" class="btn">Register</button>
-
+    
       <div class="register-link">
-        <p>Already have an account? <a href="login">Login</a></p>
+        <p>Already have an account? <a href="/">Login</a></p>
       </div>
-    </form>
+    </form>    
   </div>
 </body>
 </html>
