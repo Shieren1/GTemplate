@@ -149,26 +149,26 @@
                                     <div class="row">
                                         <div class="col-md-6">
                                             <label for="firstname">First Name</label>
-                                            <input id="firstname" class="form-control" type="text" placeholder="First Name" value="John">
+                                            <input id="firstname" class="form-control" type="text" placeholder="First Name" value="<%= user.firstname %>" readonly>
                                         </div>
                                         <div class="col-md-6">
                                             <label for="lastname">Last Name</label>
-                                            <input id="lastname" class="form-control" type="text" placeholder="Last Name" value="Doe">
+                                            <input id="lastname" class="form-control" type="text" placeholder="Last Name" value="<%= user.lastname %>" readonly>
                                         </div>
                                         <div class="col-md-6">
                                             <label for="email">Email</label>
-                                            <input id="email" class="form-control" type="email" placeholder="Email" value="john.doe@email.com">
+                                            <input id="email" class="form-control" type="email" placeholder="Email" value="<%= user.email %>" readonly>
                                         </div>
                                         <div class="col-md-6">
                                             <label for="contact">Contact</label>
-                                            <input id="contact" class="form-control" type="text" placeholder="Contact Number" value="0995-644-8287">
+                                            <input id="contact" class="form-control" type="text" placeholder="Contact Number" value="<%= user.contact %>" readonly>
                                         </div>
                                         <div class="col-md-6">
                                             <label for="gender">Gender</label>
-                                            <select id="gender" class="form-control">
-                                                <option value="male">Male</option>
-                                                <option value="female">Female</option>
-                                                <option value="other">Other</option>
+                                            <select id="gender" class="form-control" disabled>
+                                                <option value="male" <%= user.gender === 'male' ? 'selected' : '' %>>Male</option>
+                                                <option value="female" <%= user.gender === 'female' ? 'selected' : '' %>>Female</option>
+                                                <option value="other" <%= user.gender === 'other' ? 'selected' : '' %>>Other</option>
                                             </select>
                                         </div>
                                     </div>
@@ -178,27 +178,27 @@
                                     <div class="row">
                                         <div class="col-md-6">
                                             <label for="country">Country</label>
-                                            <input id="country" class="form-control" type="text" placeholder="Country" value="Philippines">
+                                            <input id="country" class="form-control" type="text" placeholder="Country" value="<%= user.country %>" readonly>
                                         </div>
                                         <div class="col-md-6">
                                             <label for="province">Province</label>
-                                            <input id="province" class="form-control" type="text" placeholder="Province" value="Oriental Mindoro">
+                                            <input id="province" class="form-control" type="text" placeholder="Province" value="<%= user.province %>" readonly>
                                         </div>
                                         <div class="col-md-6">
                                             <label for="city">City</label>
-                                            <input id="city" class="form-control" type="text" placeholder="City" value="Puerto Galera">
+                                            <input id="city" class="form-control" type="text" placeholder="City" value="<%= user.city %>" readonly>
                                         </div>
                                         <div class="col-md-6">
                                             <label for="barangay">Barangay</label>
-                                            <input id="barangay" class="form-control" type="text" placeholder="Barangay" value="Poblacion">
+                                            <input id="barangay" class="form-control" type="text" placeholder="Barangay" value="<%= user.barangay %>" readonly>
                                         </div>
                                         <div class="col-md-6">
                                             <label for="sitio">Sitio</label>
-                                            <input id="sitio" class="form-control" type="text" placeholder="Sitio" value="Sitio Muelle">
+                                            <input id="sitio" class="form-control" type="text" placeholder="Sitio" value="<%= user.sitio %>" readonly>
                                         </div>
                                         <div class="col-md-6">
                                             <label for="zip_code">Zip Code</label>
-                                            <input id="zip_code" class="form-control" type="text" placeholder="Zip Code" value="5203">
+                                            <input id="zip_code" class="form-control" type="text" placeholder="Zip Code" value="<%= user.zip_code %>" readonly>
                                         </div>
                                     </div>
                                     <div class="row">
@@ -268,11 +268,6 @@
                                         <div class="col-md-6">
                                             <label for="confirm_password">Confirm Password</label>
                                             <input id="confirm_password" class="form-control" type="password" placeholder="Confirm Password">
-                                        </div>
-                                    </div>
-                                    <div class="row">
-                                        <div class="col-md-12">
-                                            <button class="btn">Update Account</button>
                                         </div>
                                     </div>
                                 </form>

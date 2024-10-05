@@ -18,16 +18,24 @@ const info = {
             ],
             callback
         );
-        
     },
-        findByEmail: (email, callback) => {
-            const sql = 'SELECT * FROM user_info WHERE email = ?';
-            db.query(sql, [email], (err, results) => {
-                if (err) return callback(err, null);
-                if (results.length === 0) return callback(null, null); 
-                return callback(null, results[0]); 
-            });
-        }
-    };
+    
+    findByEmail: (email, callback) => {
+        const sql = 'SELECT * FROM user_info WHERE email = ?';
+        db.query(sql, [email], (err, results) => {
+            if (err) return callback(err, null);
+            if (results.length === 0) return callback(null, null); 
+            return callback(null, results[0]); 
+        });
+    },
+     findById: (userId, callback) => {
+        const sql = 'SELECT * FROM user_info WHERE user_id = ?';
+        db.query(sql, [userId], (err, results) => {
+            if (err) return callback(err, null);
+            if (results.length === 0) return callback(null, null);
+            return callback(null, results[0]);
+        });
+    }
+};
 
 module.exports = info;
