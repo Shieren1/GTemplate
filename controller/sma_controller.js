@@ -70,7 +70,7 @@ const ams = {
           console.error('Error saving user:', err);
           return res.status(500).send('Internal Server Error');
         }
-        res.redirect('/login'); 
+        res.redirect('/'); 
       });
     });
   },
