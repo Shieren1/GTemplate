@@ -1,5 +1,5 @@
 const info = require('../models/user_info'); 
-const db = require('../config/database'); // Ensure you have the db connection
+const db = require('../config/database'); 
 const bcrypt = require('bcrypt');
 
 
@@ -83,26 +83,26 @@ const ams = {
 
   initSession: (app) => {
     app.use(expressSession({
-      secret: 'yourSecretKey', // Change this to a secret key
+      secret: 'yourSecretKey', 
       resave: false,
       saveUninitialized: true,
-      cookie: { secure: false } // Set secure to true if using https
+      cookie: { secure: false } 
     }));
   },
 
   myacc: (req, res) => {
-    // Check if user is logged in
+    
     if (!req.session.userId) {
-      return res.redirect('/login'); // Redirect to login if not logged in
+      return res.redirect('/login'); 
     }
 
-    // Fetch user info using the user ID stored in the session
+    
     info.findById(req.session.userId, (err, user) => {
       if (err) {
         console.error('Error fetching user info:', err);
         return res.status(500).send('Internal Server Error');
       }
-      res.render('myacc', { user }); // Pass user info to the template
+      res.render('myacc', { user }); 
     });
   },
 
@@ -124,8 +124,8 @@ const ams = {
           return res.status(500).send('Internal Server Error');
         }
         if (isMatch) {
-          req.session.userId = user.user_id; // Store user ID in session
-          logUserLogin(user.user_id, req.ip, req.get('User-Agent')); // Log the login
+          req.session.userId = user.user_id; 
+          logUserLogin(user.user_id, req.ip, req.get('User-Agent')); 
           return res.redirect('/home');
         } else {
           return res.status(401).send('Invalid email or password');
@@ -135,7 +135,7 @@ const ams = {
   }
 };
 
-// Function to log user login
+
 const logUserLogin = (userId, ipAddress, userAgent) => {
   const sql = `
       INSERT INTO user_logins (user_id, ip_address, user_agent) 
