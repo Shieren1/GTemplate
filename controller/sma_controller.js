@@ -42,6 +42,10 @@ const ams = {
     res.render('cart');
   },
 
+  addprod: (req, res) => {
+    res.render('addprod');
+  },
+
   saveUser: (req, res) => {
     const data = {
       firstname: req.body.firstname,

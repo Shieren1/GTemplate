@@ -13,8 +13,10 @@ router.get('/checkout', sma.checkout);
 router.get('/contact', sma.contact);
 router.get('/wishlist', sma.wishlist);
 router.get('/cart', sma.cart);
+router.get('/addprod', sma.addprod);
 router.post('/register', sma.saveUser);
 router.post('/login', sma.loginUser);
+
 
 
 module.exports = router;
