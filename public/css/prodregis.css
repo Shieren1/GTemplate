@@ -1,20 +1,19 @@
-/* Global Reset */
+
 * {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
 }
 
-
 body {
     font-family: 'Montserrat', sans-serif;
-    background: linear-gradient(135deg, #ff7f50, #ffdab9); /* Coral gradient */
+    background: linear-gradient(135deg, #ff7f50, #fc9c49); 
     display: flex;
     justify-content: center;
     align-items: center;
     height: 100vh;
     padding: 20px;
-    color: #fff;
+    color: #000; 
     animation: gradientBG 10s ease infinite;
 }
 
@@ -24,13 +23,12 @@ body {
     100% { background-position: 0% 50%; }
 }
 
-
 .form-container {
-    background: rgba(255, 255, 255, 0.2);
+    background: rgba(246, 194, 151, 0.978);
     padding: 40px;
     border-radius: 20px;
     width: 100%;
-    max-width: 500px;
+    max-width: 900px;
     backdrop-filter: blur(10px);
     display: flex;
     flex-direction: column;
@@ -40,12 +38,11 @@ body {
 
 h2 {
     text-align: center;
-    font-size: 26px;
+    font-size: 36px;
     margin-bottom: 30px;
-    color: #fff;
+    color: #000; 
     text-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
 }
-
 
 .form-group {
     display: flex;
@@ -54,12 +51,11 @@ h2 {
 }
 
 .form-group label {
-    font-weight: 500;
+    font-weight: 700;
     font-size: 16px;
-    color: #fff;
+    color: #000; 
     text-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
 }
-
 
 .form-group input[type="text"],
 .form-group input[type="number"],
@@ -89,25 +85,23 @@ h2 {
     box-shadow: 0 0 10px rgba(255, 255, 255, 0.4);
 }
 
-
 .btn-submit {
     padding: 15px;
     border: none;
-    color: #fff;
+    color: #000; 
     font-size: 18px;
     font-weight: 600;
     text-align: center;
-    background: linear-gradient(45deg, #ff7f50, #ffdab9); /* Coral gradient */
+    background: linear-gradient(45deg, #e0673b, #ff973c);
     border-radius: 10px;
     cursor: pointer;
     transition: background 0.3s ease, transform 0.2s ease;
 }
 
 .btn-submit:hover {
-    background: linear-gradient(45deg, #ff7f50, #ffa07a); /* Coral hover effect */
+    background: linear-gradient(45deg, #ff7f50, #ffa07a); 
     transform: scale(1.05);
 }
-
 
 .form-group input[type="file"] {
     background: rgba(255, 255, 255, 0.5);
@@ -120,16 +114,14 @@ h2 {
     background-color: #ff7f50;
     border: none;
     border-radius: 8px;
-    color: white;
+    color: #000; 
     font-size: 14px;
     cursor: pointer;
 }
 
-
 .form-container:focus-within {
     box-shadow: 0 15px 30px rgba(0, 0, 0, 0.3);
 }
-
 
 @media (max-width: 480px) {
     .form-container {
