@@ -1,5 +1,5 @@
-const info = require('../models/user_info'); 
-const db = require('../config/database'); 
+const info = require('../models/user_info');
+const db = require('../config/database');
 const bcrypt = require('bcrypt');
 const expressSession = require('express-session'); // Ensure you have this if not included
 
@@ -17,7 +17,7 @@ const ams = {
   },
   
   myacc: (req, res) => {
-    const userId = req.session.userId; // Get user ID from session
+    const userId = req.session.userId; 
 
     info.findById(userId, (err, user) => {
       if (err) {
@@ -28,7 +28,6 @@ const ams = {
         return res.status(404).send('User not found');
       }
 
-      // Render the view and pass the user data
       res.render('myacc', { user });
     });
   },
@@ -108,13 +107,43 @@ const ams = {
           return res.status(500).send('Internal Server Error');
         }
         if (isMatch) {
-          req.session.userId = user.user_id; // Store user_id in session
+          req.session.userId = user.user_id; 
           logUserLogin(user.user_id, req.ip, req.get('User-Agent'));
           return res.redirect('/home');
         } else {
           return res.status(401).send('Invalid email or password');
         }
       });
+    });
+  },
+
+  updateUserProfile: (req, res) => {
+    const userId = req.session.userId; 
+
+    if (!userId) {
+      return res.status(403).send('You must be logged in to update your profile');
+    }
+
+    const updatedData = {
+      firstname: req.body.firstname,
+      lastname: req.body.lastname,
+      email: req.body.email,
+      contact: req.body.contact,
+      gender: req.body.gender,
+      country: req.body.country,
+      province: req.body.province,
+      city: req.body.city,
+      barangay: req.body.barangay,
+      sitio: req.body.sitio,
+      zip_code: req.body.zip_code,
+    };
+
+    info.update(userId, updatedData, (err, results) => {
+      if (err) {
+        console.error('Error updating user profile:', err);
+        return res.status(500).send('Internal Server Error');
+      }
+      res.redirect('/myacc');
     });
   }
 };
@@ -125,20 +154,10 @@ const logUserLogin = (userId, ipAddress, userAgent) => {
       VALUES (?, ?, ?)
   `;
   db.query(sql, [userId, ipAddress, userAgent], (err) => {
-      if (err) {
-          console.error('Error logging user login:', err);
-      }
+    if (err) {
+      console.error('Error logging user login:', err);
+    }
   });
-};
-
-info.findById = (userId, callback) => {
-    const sql = 'SELECT * FROM user_info WHERE user_id = ?';
-    db.query(sql, [userId], (err, results) => {
-        if (err) {
-            return callback(err);
-        }
-        callback(null, results[0]);
-    });
 };
 
 module.exports = ams;

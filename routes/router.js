@@ -3,6 +3,7 @@ const router = express.Router();
 const sma = require('../controller/sma_controller');
 const kdmc = require('../controller/prod_controller');
 
+// GET Routes
 router.get('/', sma.login);
 router.get('/products', sma.products);
 router.get('/prodDetail', sma.prodDetail);
@@ -15,12 +16,10 @@ router.get('/wishlist', sma.wishlist);
 router.get('/cart', sma.cart);
 router.get('/addprod', kdmc.addprod);
 
+// POST Routes
 router.post('/register', sma.saveUser);
 router.post('/login', sma.loginUser);
 router.post('/addprod', kdmc.upload.single('image'), kdmc.addProductPost);
-router.post('/register', sma.saveUser);
-router.post('/login', sma.loginUser);
-
-
+router.post('/updateProfile', sma.updateUserProfile);
 
 module.exports = router;

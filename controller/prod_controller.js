@@ -4,10 +4,10 @@ const Product = require('../models/prod_info');
 
 const storage = multer.diskStorage({
     destination: (req, file, cb) => {
-        cb(null, './public/img'); // Save images in 'public/img' folder
+        cb(null, './public/prod_img'); 
     },
     filename: (req, file, cb) => {
-        cb(null, Date.now() + path.extname(file.originalname)); // Add timestamp to image filename
+        cb(null, Date.now() + path.extname(file.originalname)); 
     }
 });
 
@@ -22,10 +22,7 @@ const kdmc = {
         const { prodName, prodDesc, category, quantity, price } = req.body;
         const prod_img = req.file.filename;
         
-        // Use user_id from the session, assuming it's set after login
         const user_id = req.session.userId; 
-
-        // Check if user_id exists in session
         if (!user_id) {
             return res.status(401).send('Unauthorized: User not logged in');
         }
@@ -35,7 +32,7 @@ const kdmc = {
                 console.log(err);
                 res.status(500).send('Error adding product');
             } else {
-                res.redirect('/products'); // Redirect to products page after successful addition
+                res.redirect('/products'); 
             }
         });
     }
