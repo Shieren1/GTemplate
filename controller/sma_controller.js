@@ -1,7 +1,7 @@
 const info = require('../models/user_info'); 
 const db = require('../config/database'); 
 const bcrypt = require('bcrypt');
-
+const expressSession = require('express-session'); // Add this if it's not already included
 
 const ams = {
   index: (req, res) => {
@@ -44,10 +44,6 @@ const ams = {
     res.render('cart');
   },
 
-  addprod: (req, res) => {
-    res.render('addprod');
-  },
-
   saveUser: (req, res) => {
     const data = {
       firstname: req.body.firstname,
@@ -81,31 +77,6 @@ const ams = {
     });
   },
 
-  initSession: (app) => {
-    app.use(expressSession({
-      secret: 'yourSecretKey', 
-      resave: false,
-      saveUninitialized: true,
-      cookie: { secure: false } 
-    }));
-  },
-
-  myacc: (req, res) => {
-    
-    if (!req.session.userId) {
-      return res.redirect('/login'); 
-    }
-
-    
-    info.findById(req.session.userId, (err, user) => {
-      if (err) {
-        console.error('Error fetching user info:', err);
-        return res.status(500).send('Internal Server Error');
-      }
-      res.render('myacc', { user }); 
-    });
-  },
-
   loginUser: (req, res) => {
     const { email, password } = req.body;
 
@@ -124,8 +95,8 @@ const ams = {
           return res.status(500).send('Internal Server Error');
         }
         if (isMatch) {
-          req.session.userId = user.user_id; 
-          logUserLogin(user.user_id, req.ip, req.get('User-Agent')); 
+          req.session.userId = user.user_id; // Store user_id in session
+          logUserLogin(user.user_id, req.ip, req.get('User-Agent'));
           return res.redirect('/home');
         } else {
           return res.status(401).send('Invalid email or password');
@@ -134,7 +105,6 @@ const ams = {
     });
   }
 };
-
 
 const logUserLogin = (userId, ipAddress, userAgent) => {
   const sql = `
