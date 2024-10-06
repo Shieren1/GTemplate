@@ -1,7 +1,6 @@
 const db = require('../config/database');
 
 const info = {
-    // Method to save a new user to the database
     save: (data, callback) => {
         const sql = `
             INSERT INTO user_info (
@@ -27,7 +26,6 @@ const info = {
         );
     },
     
-    // Method to find a user by their email
     findByEmail: (email, callback) => {
         const sql = 'SELECT * FROM user_info WHERE email = ?';
         db.query(sql, [email], (err, results) => {
@@ -37,7 +35,6 @@ const info = {
         });
     },
 
-    // Method to find a user by their ID
     findById: (userId, callback) => {
         const sql = 'SELECT * FROM user_info WHERE user_id = ?';
         db.query(sql, [userId], (err, results) => {
@@ -47,7 +44,6 @@ const info = {
         });
     },
 
-    // Method to update a user's profile information
     update: (userId, updatedData, callback) => {
         const sql = `
             UPDATE user_info
