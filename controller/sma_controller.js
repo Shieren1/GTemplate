@@ -1,7 +1,7 @@
 const info = require('../models/user_info'); 
 const db = require('../config/database'); 
 const bcrypt = require('bcrypt');
-const expressSession = require('express-session'); // Add this if it's not already included
+const expressSession = require('express-session'); // Ensure you have this if not included
 
 const ams = {
   index: (req, res) => {
@@ -17,7 +17,20 @@ const ams = {
   },
   
   myacc: (req, res) => {
-    res.render('myacc');
+    const userId = req.session.userId; // Get user ID from session
+
+    info.findById(userId, (err, user) => {
+      if (err) {
+        console.error('Error fetching user data:', err);
+        return res.status(500).send('Internal Server Error');
+      }
+      if (!user) {
+        return res.status(404).send('User not found');
+      }
+
+      // Render the view and pass the user data
+      res.render('myacc', { user });
+    });
   },
   
   login: (req, res) => {
@@ -116,6 +129,16 @@ const logUserLogin = (userId, ipAddress, userAgent) => {
           console.error('Error logging user login:', err);
       }
   });
+};
+
+info.findById = (userId, callback) => {
+    const sql = 'SELECT * FROM user_info WHERE user_id = ?';
+    db.query(sql, [userId], (err, results) => {
+        if (err) {
+            return callback(err);
+        }
+        callback(null, results[0]);
+    });
 };
 
 module.exports = ams;
