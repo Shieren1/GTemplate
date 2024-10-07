@@ -14,6 +14,7 @@ const storage = multer.diskStorage({
 const upload = multer({ storage: storage });
 
 const kdmc = {
+
     addprod: (req, res) => {
         res.render('addprod');
     },
@@ -21,7 +22,7 @@ const kdmc = {
     addProductPost: (req, res) => {
         const { prodName, prodDesc, category, quantity, price } = req.body;
         const prod_img = req.file.filename;
-        
+
         const user_id = req.session.userId; 
         if (!user_id) {
             return res.status(401).send('Unauthorized: User not logged in');
@@ -35,11 +36,37 @@ const kdmc = {
                 res.redirect('/products'); 
             }
         });
-    }
+    },
+    displayProducts: (req, res) => {
+        const page = parseInt(req.query.page) || 1; 
+        const limit = 12; 
+        const offset = (page - 1) * limit;
+
+        Product.getPaginatedProducts(limit, offset, (err, products) => {
+            if (err) {
+                return res.status(500).send('Error fetching products');
+            }
+
+            Product.getProductCount((err, totalProducts) => {
+                if (err) {
+                    return res.status(500).send('Error fetching product count');
+                }
+
+                const totalPages = Math.ceil(totalProducts / limit);
+
+                res.render('Products', {
+                    products,
+                    currentPage: page,
+                    totalPages
+                });
+            });
+        });
+    },
 };
 
 module.exports = {
     addprod: kdmc.addprod,
     addProductPost: kdmc.addProductPost,
-    upload: upload
+    upload: upload,
+    displayProducts: kdmc.displayProducts
 };

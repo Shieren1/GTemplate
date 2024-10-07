@@ -5,7 +5,7 @@ const kdmc = require('../controller/prod_controller');
 
 // GET Routes
 router.get('/', sma.login);
-router.get('/products', sma.products);
+router.get('/products', kdmc.displayProducts); // Updated route to display products
 router.get('/prodDetail', sma.prodDetail);
 router.get('/myacc', sma.myacc);
 router.get('/home', sma.index);
