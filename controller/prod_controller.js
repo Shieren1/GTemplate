@@ -14,7 +14,6 @@ const storage = multer.diskStorage({
 const upload = multer({ storage: storage });
 
 const kdmc = {
-
     addprod: (req, res) => {
         res.render('addprod');
     },
@@ -37,6 +36,7 @@ const kdmc = {
             }
         });
     },
+
     displayProducts: (req, res) => {
         const page = parseInt(req.query.page) || 1; 
         const limit = 12; 
@@ -62,11 +62,29 @@ const kdmc = {
             });
         });
     },
+
+    insights: (req, res) => {
+        Product.getProductCountByCategory((err, data) => {
+            if (err) {
+                console.log(err);
+                return res.status(500).send('Error fetching product data for insights');
+            }
+
+            const categories = data.map(item => item.category);
+            const counts = data.map(item => item.count); 
+
+            res.render('insights', {
+                categories,
+                counts 
+            });
+        });
+    }
 };
 
 module.exports = {
     addprod: kdmc.addprod,
     addProductPost: kdmc.addProductPost,
     upload: upload,
-    displayProducts: kdmc.displayProducts
+    displayProducts: kdmc.displayProducts,
+    insights: kdmc.insights // Add the insights function here
 };
